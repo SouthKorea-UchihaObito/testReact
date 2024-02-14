@@ -1,0 +1,5 @@
+.App {
+  text-align: center;
+}
+.mainBg {height:500px;background-image:url('./keyboardBg.png');background-position:center;background-repeat:no-repeat;background-size:cover;}
+.productGroup {padding:70px 0;}
