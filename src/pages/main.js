@@ -63,7 +63,14 @@ function Main() {
                     setLastProduct(true);
                     return ;
                 }
-                
+                /* 서버로 데이터 전송하는 POST 요청 */
+                // axios.post('/', {name : 'shim'}) 
+
+                // /* 동시에 ajax 요청 여러개 한다면 */
+                // Promise.all([axios.get('/url'), axios.get('/url2') ])
+                // .then(()=>{
+                //     2개 성공했을 시 메시지
+                // })
             }}>버튼</button>
         </main>
     )
