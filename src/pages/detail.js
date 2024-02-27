@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
+import * as S from './detail.styles.js'
+import TabContent from "../components/detail/tabContent.jsx";
 // props 문법도 사용 가능 자바스크립트 에서도 사용가능해서 장점
 let YellowBtn = styled.button`
     padding:10px;
@@ -54,6 +56,14 @@ function Detail(props){
         return x.id == id
     })
     
+
+    const [tabObj, setTabObj] = useState([
+        {id : 0, title : '상품정보', content: "상품정보컨텐츠"},
+        {id : 1, title : '배송정책', content: "배송정책컨텐츠"},
+        {id : 2, title : '환불내용', content: "환불내용컨텐츠"}
+    ]);
+    const [tabNum, setTabNum] = useState(0);
+   
     return (
         <Container>
             {/*             
@@ -74,7 +84,23 @@ function Detail(props){
             <input type="text" onChange={(e)=>{
                 setInputValue(e.target.value)
             }}></input>
+            <S.TabWrap>
+                {
+                    tabObj.map((item, index)=>{
+                        return (
+                            <button className={tabNum === index ? 'active' : ''} type="button" key={item.id} onClick={()=>{
+                                setTabNum(index);
+                            }}>
+                                <span>{item.title}</span>
+                            </button>
+                        )
+                    })
+                }
+            </S.TabWrap>
+            <TabContent tabObj={tabObj} tabNum={tabNum} />
         </Container>
     )
 }
+
+
 export default Detail;
