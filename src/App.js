@@ -9,6 +9,8 @@ import Main from './pages/main';
 import Header from './header';
 import Detail from './pages/detail';
 import Event from './pages/event';
+import Cart from './components/cart';
+
 
 function App() {
   let [product] = useState(keyboardData)
@@ -26,7 +28,7 @@ function App() {
         <Route path='/detail/:id' element={<Detail product={product}/> }/>
         {/* 404 Page */}
         <Route path='*' element={<div>존재하지않는페이지</div>}/> 
-        
+        <Route path='/cart' element={<Cart />}/>
         {/*
           Nested Routes 문법 
           하위페이지 연결
