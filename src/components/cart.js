@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles/cart.module.scss"
-import { changeName, countPlus } from "../store.js";
+import { changeName, countPlus, plusCount } from "../store.js";
 
 
 function Cart(){
@@ -17,9 +17,13 @@ function Cart(){
 
     // 3. 만든 함수 import 해서 사용 하려면 이것도 필요함
     let dispatch = useDispatch() // useDispatch -> store.js로 요청 보내주는 함수
+   
     return (
         <div className={styles.cart}>
-            <p>{storeState.user}의 정보</p>
+            <p>{storeState.productInfo[0].name}의 {storeState.productInfo[0].count}수량</p>
+            <button type='button' onClick={()=>{
+                dispatch(countPlus());
+            }}>증가버튼</button>
             <table>
                 <caption>상품목록</caption>
                 <colgroup>
@@ -38,23 +42,24 @@ function Cart(){
                 </thead>
                 <tbody>
                     {
-                        storeState.productInfo.map((item, index)=>{
-                            return (
-                                <tr key={item.id}> 
-                                    <td>{index}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.count}</td>
-                                    <td><button type="button" onClick={()=>{
-                                        // 3. 만든 함수 import 해서 사용
-                                        dispatch(countPlus()); // 이렇게 사용해야함
-                                        /*
-                                            dispatch(state변경함수()) 이렇게 감싸서 사용
-                                        */ 
-                                    }}>+</button></td>
-                                </tr>
-                            )
-                        })
+                        // storeState.productInfo.map((item, index)=>{
+                        //     return (
+                        //         <tr key={item.id}> 
+                        //             <td>{index}</td>
+                        //             <td>{item.name}</td>
+                        //             <td>{item.count}</td>
+                        //             <td><button type="button" onClick={()=>{
+                        //                 // 3. 만든 함수 import 해서 사용
+                        //                 dispatch(countPlus()); // 이렇게 사용해야함
+                        //                 /*
+                        //                     dispatch(state변경함수()) 이렇게 감싸서 사용
+                        //                 */ 
+                        //             }}>+</button></td>
+                        //         </tr>
+                        //     )
+                        // })
                     }
+                    
                 </tbody>
             </table>
         </div>
