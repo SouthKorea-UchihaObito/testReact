@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles/cart.module.scss"
-import { changeName, countPlus, plusCount } from "../store.js";
+import { countPlus } from "../store/userSlice";
 
 
 function Cart(){
@@ -20,9 +20,9 @@ function Cart(){
    
     return (
         <div className={styles.cart}>
-            <p>{storeState.productInfo[0].name}의 {storeState.productInfo[0].count}수량</p>
+            <p>{storeState.productInfo[0].name}의 {storeState.user[0].count}수량</p>
             <button type='button' onClick={()=>{
-                dispatch(countPlus());
+                dispatch(countPlus(1)); // 화물 보내기
             }}>증가버튼</button>
             <table>
                 <caption>상품목록</caption>
