@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
-import user from './store/userSlice.js' // 다른곳에있는 것을 쓸때는 이렇게 import 사용할수 있음
+import productInfo from './store/userSlice.js' // 다른곳에있는 것을 쓸때는 이렇게 import 사용할수 있음
 /*
   쓰는 이유?
   컴포넌트간 state 공유가 편해진다.
@@ -43,22 +43,22 @@ import user from './store/userSlice.js' // 다른곳에있는 것을 쓸때는 �
 // })
 
 
-let productInfo = createSlice({
-  name : 'productInfo',
-  initialState : [
-    {id : 0, name : 'White and Black', count : 2},
-    {id : 2, name : 'Grey Yordan', count : 1}
-  ],
-  reducers : { 
-    plusCount(state){ 
-      state[0].count += 1
-    }
-  }
-  /*
-    array/object의 경우 직접수정해도 state 변경됨
-    immer.js 자동으로 설치되어서  직접수정해도 state 변경됨
-  */ 
-})
+// let productInfo = createSlice({
+//   name : 'productInfo',
+//   initialState : [
+//     {id : 0, name : 'White and Black', count : 2},
+//     {id : 2, name : 'Grey Yordan', count : 1}
+//   ],
+//   reducers : { 
+//     plusCount(state){ 
+//       state[0].count += 1
+//     }
+//   }
+//   /*
+//     array/object의 경우 직접수정해도 state 변경됨
+//     immer.js 자동으로 설치되어서  직접수정해도 state 변경됨
+//   */ 
+// })
 
 let stock = createSlice({
   name : 'stock',
@@ -77,9 +77,8 @@ let stock = createSlice({
 export const store = configureStore({
   reducer: {
     // 등록 하는 방법
-    user : user.reducer,
     stock : stock.reducer,
-    productInfo : productInfo.reducer
+    productInfo : productInfo.reducer,
   },
 })
 

@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-let user = createSlice({
+let productInfo = createSlice({
     name : 'User',
     initialState : [
       {id : 0, name : 'White and Black', count : 2},
-      {id : 2, name : 'Grey Yordan', count : 1}
+      {id : 1, name : 'Grey Yordan', count : 1}
     ],
     // Redux의 state 변경 하는 방법
     // 1. state 수정해주는 함수 만든다.
@@ -19,9 +19,9 @@ let user = createSlice({
       },
       countPlus(state, action){ // 기존 state 필요할 경우 파라미터에 넣을 수 있음
         // state 변경함수에 파라미터 뚫는 법
-  
-        state[0].count += action.payload
-        console.log(state[0].count)
+        // state[0].count += action.payload
+        state[action.payload].count +=1
+        console.log(action.payload)
         // 이렇게 파라미터에 값을 정해주지 않고 아래에서 더하고 싶은 값을 기재가능 a 라는 파라미터만 쓰는게 아니라 payload 라고 기재해야함
         // 파라미터 작명할때 보통 action 으로 작명 정보 변경 함수임
       }
@@ -30,8 +30,8 @@ let user = createSlice({
   
     }
 })
-export let { changeName, countPlus } = user.actions;
+export let { changeName, countPlus } = productInfo.actions;
 
 
-export default user;
+export default productInfo;
 

@@ -20,7 +20,7 @@ function Cart(){
    
     return (
         <div className={styles.cart}>
-            <p>{storeState.productInfo[0].name}의 {storeState.user[0].count}수량</p>
+            <p>{storeState.productInfo[0].name}</p>
             <button type='button' onClick={()=>{
                 dispatch(countPlus(1)); // 화물 보내기
             }}>증가버튼</button>
@@ -42,22 +42,22 @@ function Cart(){
                 </thead>
                 <tbody>
                     {
-                        // storeState.productInfo.map((item, index)=>{
-                        //     return (
-                        //         <tr key={item.id}> 
-                        //             <td>{index}</td>
-                        //             <td>{item.name}</td>
-                        //             <td>{item.count}</td>
-                        //             <td><button type="button" onClick={()=>{
-                        //                 // 3. 만든 함수 import 해서 사용
-                        //                 dispatch(countPlus()); // 이렇게 사용해야함
-                        //                 /*
-                        //                     dispatch(state변경함수()) 이렇게 감싸서 사용
-                        //                 */ 
-                        //             }}>+</button></td>
-                        //         </tr>
-                        //     )
-                        // })
+                        storeState.productInfo.map((item, index)=>{
+                            return (
+                                <tr key={item.id}> 
+                                    <td>{index}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.count}</td>
+                                    <td><button type="button" onClick={()=>{
+                                        // 3. 만든 함수 import 해서 사용
+                                        dispatch(countPlus(storeState.productInfo[index].id)); // 이렇게 사용해야함
+                                        /*
+                                            dispatch(state변경함수()) 이렇게 감싸서 사용
+                                        */ 
+                                    }}>+</button></td>
+                                </tr>
+                            )
+                        })
                     }
                     
                 </tbody>
